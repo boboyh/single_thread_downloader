@@ -14,6 +14,9 @@ def download_file(file_name : str, file_path='./Downloads', host='localhost', po
         client_socket.mysend(command.encode('utf-8'))
         # 接收文件大小
         size_data = client_socket.recv_all(4)
+        #size = struct.unpack('!I', size_data)[0]
+        if len(size_data) != 4:
+            raise ValueError(f"Expected 4 bytes for file size, but received {len(size_data)} bytes")
         size = struct.unpack('!I', size_data)[0]
         
         # 接收文件数据

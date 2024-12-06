@@ -26,4 +26,4 @@ with gr.Blocks() as demo:
     download_btn.click(download_and_show, inputs=[file_list_dropdown, host, port], outputs=[download_output, image_preview])
 
 if __name__ == '__main__':
-    demo.launch(server_name="0.0.0.0")
+    demo.launch(server_name="0.0.0.0",share=True)
